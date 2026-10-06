@@ -1,0 +1,16 @@
+gradle.taskGraph.whenReady { taskGraph ->
+
+    def env = project.findProperty("env")?.toString()?.trim() ?: "local"
+    def version = project.version
+
+    println ""
+    println "--------------------------------------------------------------"
+    println "TENANCY LIBRARY BUILD INFO                                    "
+    println "--------------------------------------------------------------"
+    println "Project     | ${project.name}"
+    println "Version     | ${version}"
+    println "Environment | ${env}"
+    println "Tasks       | ${taskGraph.allTasks*.name.unique().join(', ')}"
+    println "--------------------------------------------------------------"
+    println ""
+}
